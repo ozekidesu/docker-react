@@ -13,5 +13,8 @@ RUN npm run build
 
 FROM nginx
 
+# used by AWS Elastic Beanstalk to map port
+EXPOSE 80
+
 # copy contents of /app/build to nginx
 COPY --from=builder /app/build /usr/share/nginx/html
