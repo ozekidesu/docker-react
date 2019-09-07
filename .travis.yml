@@ -4,6 +4,6 @@ services:
 
 before_install:
   - docker build -t ozekidesu/docker-react -f dockerfile.dev .
-
+### try again
 script:
   - docker run ozekidesu/docker-react npm run test -- --coverage
