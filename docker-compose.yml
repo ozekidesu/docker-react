@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .                    # Set directory to pull the container files from
+      dockerfile: Dockerfile.dev    # location of the dockerfile
+    ports:
+      - "3000:3000"
+    volumes: 
+      - /home/node/app/node_modules # Bookmark the folder in the container
+      - .:/home/node/app            # Map working directory to the directory above
+    stdin_open: true                # Stands for interactive
+  tests:                            # Create second test container
+    build:
+      context: .                    # Set directory to pull the container files from
+      dockerfile: Dockerfile.dev    # location of the dockerfile
+    volumes: 
+      - /home/node/app/node_modules # Bookmark the folder in the container
+      - .:/home/node/app            # Map working directory to the directory above
+    command: ["npm", "run", "test"] # Update the container startup command 
+  
