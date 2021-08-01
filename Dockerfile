@@ -1,7 +1,7 @@
 # Build Phase --- Install dependencies and run the build process
 FROM node:alpine
 WORKDIR '/app'
-COPY package.json .
+COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
